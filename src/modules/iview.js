@@ -1,3 +1,6 @@
+/**
+ * store的一个分支，方便管理对应的store
+ */
 import store from './index'
 store.registerModule('ivew', {
   state: {

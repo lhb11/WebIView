@@ -15,6 +15,7 @@ const RouterConfig = {
   routes: routers
 }
 const router = new Router(RouterConfig)
+// 路由跳转的时候过滤是否登录
 router.beforeEach((to, from, next) => {
   iView
     .LoadingBar

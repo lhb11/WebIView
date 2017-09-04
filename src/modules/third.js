@@ -1,9 +1,8 @@
-/**
- * store的一个分支，方便管理对应的store
- */
-import Vue from 'vue'
-import store from './index'
+
 import {apiDefine} from '../libs'
+import store from './index'
+import Vue from 'vue'
+debugger
 store.registerModule('third', {
   state: {
     countDown: {
@@ -16,12 +15,8 @@ store.registerModule('third', {
   mutations: {
     SET_COUNT_DOWN(state, second) {
       state.countDown.second = second
-      state.countDown.text = second === 0
-        ? '再次发送'
-        : '请稍等 ' + second
-      state.countDown.disable = second
-        ? true
-        : false
+      state.countDown.text = second === 0 ? '再次发送' : '请稍等 ' + second
+      state.countDown.disable = second < 0
     },
     SET_CLEAR_INTERVAL(state) {
       state
@@ -55,3 +50,4 @@ store.registerModule('third', {
     }
   }
 })
+export default store
