@@ -22,6 +22,17 @@ module.exports = {
     // allow async-await
     'generator-star-spacing': 0,
     // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
+    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
+    /** ESLint 中的单双引号的配置 https://eslint.org/docs/rules/quotes */
+    /* eslint quotes: ["error", "double"] */
+    /* eslint-env es6 */
+    /** 配置let、var等是否可以定义多个变量，例如：var bar,baz; */
+    // 'one-var': ["error", "always"]
+    /** 控制方法()的前后的空格 */
+    "space-before-function-paren": ["error", {
+      "anonymous": "never",
+      "named": "never",
+      "asyncArrow": "always"
+    }],
   }
 }
