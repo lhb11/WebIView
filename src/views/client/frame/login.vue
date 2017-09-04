@@ -62,7 +62,8 @@ import md5 from 'md5'
 import {
   mapState
 } from 'vuex'
-
+import store from '../../../modules/third'
+console.log(store)
 export default {
   data() {
     return {
