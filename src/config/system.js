@@ -132,6 +132,7 @@ const system = {
   },
 
   filter(user) {
+    debugger
     return system
       .pages
       .menu

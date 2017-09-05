@@ -2,13 +2,13 @@ import Env from './env'
 
 let config = {
   env: Env,
-
   // 动态创建路由
   createRouter({
     menu,
     pages,
     title
   }, key) {
+    debugger
     // 定义路由及frame
     let route = {
       path: '/' + key,
@@ -92,6 +92,7 @@ let config = {
         },
         component: (resolve) => require(['../views/front/noPage.vue'], resolve)
       })
+    debugger
     console.log(route)
     return [route]
   }

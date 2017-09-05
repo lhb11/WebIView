@@ -96,6 +96,7 @@ const client = {
     ]
   },
   filter(user) {
+    debugger
     return client
       .pages
       .menu

@@ -2,7 +2,7 @@
 import {apiDefine} from '../libs'
 import store from './index'
 import Vue from 'vue'
-debugger
+
 store.registerModule('third', {
   state: {
     countDown: {
@@ -14,6 +14,7 @@ store.registerModule('third', {
   },
   mutations: {
     SET_COUNT_DOWN(state, second) {
+      debugger
       state.countDown.second = second
       state.countDown.text = second === 0 ? '再次发送' : '请稍等 ' + second
       state.countDown.disable = second < 0

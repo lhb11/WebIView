@@ -1,4 +1,5 @@
 <template>
+
   <div class="index">
     <Row type="flex" justify="center" align="middle">
       <Col span="24">
@@ -55,6 +56,22 @@
       </Col>
     </Row>
   </div>
+
+  <!-- <Form ref="formInline" :model="formInline" :rules="ruleInline" inline>
+    <FormItem prop="user">
+      <Input type="text" v-model="formInline.user" placeholder="Username">
+      <Icon type="ios-person-outline" slot="prepend"></Icon>
+      </Input>
+    </FormItem>
+    <FormItem prop="password">
+      <Input type="password" v-model="formInline.password" placeholder="Password">
+      <Icon type="ios-locked-outline" slot="prepend"></Icon>
+      </Input>
+    </FormItem>
+    <FormItem>
+      <Button type="primary" @click="handleSubmit('formInline')">登录</Button>
+    </FormItem>
+  </Form> -->
 </template>
 
 <script>
@@ -99,29 +116,53 @@ export default {
           trigger: 'blur',
           message: '请输入正确的验证码'
         }]
+      },
+      formInline: {
+        user: '',
+        password: ''
+      },
+      ruleInline: {
+        user: [
+          { required: true, message: '请填写用户名', trigger: 'blur' }
+        ],
+        password: [
+          { required: true, message: '请填写密码', trigger: 'blur' },
+          { type: 'string', min: 6, message: '密码长度不能小于6位', trigger: 'blur' }
+        ]
       }
     }
   },
   computed: {
     ...mapState({
       countDown: state => state.third.countDown
-    }),
-    countDown() {
-      debugger
-      console.log(this.$store.state.third.countDown)
-    }
+    })
   },
   methods: {
+    handleSubmit(name) {
+      debugger
+      this.$refs.formInline.validate((valid) => {
+        debugger
+        if (valid) {
+          this.$Message.success('提交成功!')
+        } else {
+          this.$Message.error('表单验证失败!')
+        }
+      })
+    },
     loginSuccess(res) {
+      debugger
       this.$router.addRoutes(this.$store.state.user.routers)
       this.$router.push({
         path: this.$route.query.redirect || '/client/index'
       })
     },
     login() {
-      if (this.tabType === 1) {
+      if (this.tabType === '1') {
+        debugger
         this.$refs.accountForm.validate(valid => {
+          debugger
           if (valid) {
+            debugger
             this.$store.dispatch('loginClientRegName', {
               regAccount: this.accountForm.regAccount,
               regMd5Pass: md5(this.accountForm.pass)
@@ -129,7 +170,9 @@ export default {
           }
         })
       } else {
+        debugger
         this.$refs.mobileForm.validate(valid => {
+          debugger
           if (valid) {
             this.$store.dispatch('loginClientSmsCode', {
               regMobile: this.mobileForm.regMobile,

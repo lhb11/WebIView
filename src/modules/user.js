@@ -15,6 +15,7 @@ store.registerModule('user', {
   mutations: {
     // 修改用户信息
     SET_USER_INFO(state, user) {
+      debugger
       localStorage.setItem('token', user.token)
       state.user = user
       state.loginCheck = true
