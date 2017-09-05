@@ -16,7 +16,9 @@ store.registerModule('user', {
     // 修改用户信息
     SET_USER_INFO(state, user) {
       debugger
+      // 本地保存token信息
       localStorage.setItem('token', user.token)
+      // store保存用户信息和登录状态
       state.user = user
       state.loginCheck = true
       state.menu = client.filter(user)
